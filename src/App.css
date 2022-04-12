@@ -1,14 +1,120 @@
-#goals {
-  width: 35rem;
-  max-width: 90%;
-  margin: 3rem auto;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-#goal-form {
-  width: 30rem;
-  max-width: 90%;
-  margin: 3rem auto;
-  padding: 2rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(122, 122, 122);
+}
+
+.container {
+  background-color: linear-gradient(to right bottom, #d1a87c, #ba8757);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+.app-wrapper {
+  background-color: #201d1c;
+  height: 100vmin;
+  max-width: 100%;
+  padding: 30px;
+  box-sizing: border-box;
   border-radius: 10px;
+  box-shadow: 3px 6px 40px #000;
+  margin-bottom: 10px;
+  max-height: 100vh;
+  overflow: scroll;
+}
+
+.header h1 {
+  color: white;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.task-input {
+  outline: none;
+  width: 260px;
+  padding: 15px;
+  margin-right: 25px;
+  font-size: 20px;
+  color: rgb(188, 182, 182);
+  background-color: #000;
+  border: 1px solid #706d69;
+  border-radius: 10px;
+}
+
+.button-add {
+  width: 70px;
+  padding: 15px 15px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 0;
+  background-color: #d26b0c;
+  cursor: pointer;
+}
+
+.list-item {
+  display: flex;
+  margin: 20px 0;
+  border: 1px solid rgb(188, 182, 182);
+  border-radius: 10px;
+  padding: 10px;
+  max-height: 30px;
+  background-color: #201d1c;
+}
+
+.button-complete,
+.button-delete,
+.button-edit {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 28px;
+  border-right: 50%;
+}
+
+.button-complete {
+  color: #ea5f5f;
+  margin-right: 10px;
+}
+
+.button-edit {
+  color: #c8ba3b;
+  margin-right: 10px;
+}
+
+.button-delete {
+  color: lightslategray;
+}
+
+.complete {
+  text-decoration-style: solid;
+  text-decoration-line: line-through;
+  text-decoration-color: #ea5f5f;
+  opacity: 0.7;
+}
+
+.list {
+  width: 220px;
+  background-color: #201d1c;
+  border: none;
+  color: rgb(188, 182, 182);
+  font-size: 20px;
+  padding-left: 10px;
+  margin-right: 15px;
+}
+
+input:focus,
+button:focus {
+  outline: none;
 }

@@ -1,50 +1,41 @@
-import React, { useState } from 'react';
-
-import CourseGoalList from './components/CourseGoals/CourseGoalList/CourseGoalList';
-import CourseInput from './components/CourseGoals/CourseInput/CourseInput';
+import { useState, useEffect } from 'react';
 import './App.css';
+import Form from './components/Form';
+import Header from './components/Header';
+import TodoList from './components/TodoList';
 
-const App = () => {
-  const [courseGoals, setCourseGoals] = useState([
-    { text: 'Car Service', id: 'g1' },
-    { text: 'Supermarket', id: 'g2' },
-  ]);
-  const [inputText, setInputText] = useState('');
+function App() {
+  const initialState = JSON.parse(localStorage.getItem('todos')) || [];
+  const [input, setInput] = useState('');
+  const [todos, setTodos] = useState(initialState);
+  const [editTodo, setEditTodo] = useState(null);
 
-  const addGoalHandler = enteredText => {
-    setCourseGoals(prevGoals => {
-      const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id: Math.random().toString() });
-      setInputText(' ');
-      return updatedGoals;
-    });
-  };
-
-  const deleteItemHandler = goalId => {
-    setCourseGoals(prevGoals => {
-      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
-      return updatedGoals;
-    });
-  };
-
-  let content = (
-    <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
-  );
-
-  if (courseGoals.length > 0) {
-    content = (
-      <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
-    );
-  }
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   return (
-    <div>
-      <section id="goal-form">
-        <CourseInput onAddGoal={addGoalHandler} />
-      </section>
-      <section id="goals">{content}</section>
+    <div className="container">
+      <div className="app-wrapper">
+        <Header />
+        <Form
+          input={input}
+          setInput={setInput}
+          todos={todos}
+          setTodos={setTodos}
+          editTodo={editTodo}
+          setEditTodo={setEditTodo}
+        />
+        <div>
+          <TodoList
+            todos={todos}
+            setTodos={setTodos}
+            setEditTodo={setEditTodo}
+          />
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default App;
